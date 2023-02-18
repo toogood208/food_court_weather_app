@@ -1,6 +1,9 @@
+import 'package:food_court_weather_app/app/app.locator.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class LocationService {
+ final _snackbar  = locator<SnackbarService>();
   Future<Position> getGeoLocationPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -8,21 +11,19 @@ class LocationService {
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       await Geolocator.openLocationSettings();
-      return Future.error('Location services are disabled.');
+      _snackbar.showSnackbar(message: "Location Services are Dissabled");
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return Future.error('Location permissions are denied');
+        _snackbar.showSnackbar(message: "Location permissions are denied");
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
+      _snackbar.showSnackbar(message: "Location permissions are permanently denied, we cannot request permissions.");
     }
 
     return await Geolocator.getCurrentPosition(

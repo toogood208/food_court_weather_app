@@ -16,38 +16,20 @@ class CurrentLocationView extends StatelessWidget {
       viewModelBuilder: () => CurrentLocationViewModel(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: splashScreen2BackgroundColor,
-        body: Stack(
-          children: <Widget>[
-            Positioned(
-              right: 0,
-              top: 0,
-              width: splash2Iconwidth,
-              height: splashScreen2IconHeight,
-              child: Image.asset(
-                'assets/images/star.png',
-              ),
-            ),
-            Positioned(
-              //<-- SEE HERE
-              top: splashScreen2WeatherTextPositionTop,
-              left: splashScreen2WeatherTestPositionLeft = 61.w,
+        body: Padding(
+          padding:  EdgeInsets.all(25.0.r),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
 
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: SizedBox(
-                  width: splashScreen2ButtonWeatherSizedBoxWidth,
-                  height: splashScreen2ButtonWeatherSizedBoxHeight,
-                  child: Text("Let’s See The ⭐ Weather Around you",
-                      textAlign: TextAlign.left,
-                      style: splashScreen2LetsWeatherTextStyle),
-                ),
+              SizedBox(
+                child: Text("Let’s See The ⭐ Weather Around you",
+                    textAlign: TextAlign.center,
+                    style: splashScreen2LetsWeatherTextStyle),
               ),
-            ),
-            Positioned(
-
-              top: splashScreen2ButtonPositionTop,
-              left: splashScreen2ButtonPositionLeft,
-              child: GestureDetector(
+              SizedBox(height: 50.h),
+              GestureDetector(
                 onTap: () async {
                   model.getCurrentLocation();
                 },
@@ -66,8 +48,8 @@ class CurrentLocationView extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

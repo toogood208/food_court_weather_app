@@ -12,6 +12,7 @@ import '../views/splash_screen/splash_screen_view.dart';
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
+    LazySingleton(classType: SnackbarService),
     LazySingleton(classType: LocationService),
   ],
   logger: StackedLogger(),
