@@ -10,10 +10,11 @@ class SplashScreenViewModel extends BaseViewModel {
   final _navigation = locator<NavigationService>();
 
 
-  void navigateToSplashcreen2() {
-   
+  void navigateToCurrentLocationView() {
+    Timer(
+      const Duration(seconds: 3),
+          () => _navigation.pushNamedAndRemoveUntil(Routes.currentLocationView),
+    );
   }
 
-  navigateToHomeView() {
-  }
 }
