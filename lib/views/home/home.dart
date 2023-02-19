@@ -12,8 +12,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      onViewModelReady: (model) =>
-          model.getWeather(lat: "6.4500", lon: "3.4000"),
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, model, child) => DefaultTabController(
         length: model.selectedCities.length,

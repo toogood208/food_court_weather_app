@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_court_weather_app/views/home/example.dart';
 import 'package:food_court_weather_app/views/home/home.dart';
 import 'package:stacked_services/stacked_services.dart';
 
