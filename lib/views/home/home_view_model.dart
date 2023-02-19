@@ -1,26 +1,68 @@
 
+import 'package:flutter/material.dart';
 import 'package:food_court_weather_app/app/app.locator.dart';
+import 'package:food_court_weather_app/core/model/city/city.dart';
+import 'package:food_court_weather_app/core/model/weather/weather.dart';
 import 'package:food_court_weather_app/core/services/server_service.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 import '../../app/app.logger.dart';
 import '../../utils/string_helper.dart';
+import '../../widgets/custom_multi_select.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final log = getLogger("WeatherViewModel");
+  final log = getLogger("HomeViewModel");
   final _server = locator<ServerService>();
-  String temperature = "";
-  String weatherIcon = "";
+
+
+
+  String temperature = "0";
   String description = "";
 
+  List<String> _cityResponse = [];
 
-  Future<void> getWeather({required String lat, required String lon}) async{
+  List <String> get cityResponse => _cityResponse;
+  List<CityResponse> _city = [];
+
+  List <CityResponse> get city => _city;
+  List<String> selectedCities = ["Lagos"];
+
+
+  Future<void> getWeather({required String lat, required String lon}) async {
     setBusy(true);
     final response = await _server.getWether(lat: lat, lon: lon);
-    temperature = removeDecimal("${response?.main?.temp ?? ""}");
-    description = response?.weather![0].description ?? "";
-    weatherIcon =
-    "http://openweathermap.org/img/w/${response!.weather![0].icon}.png";
+    temperature = removeDecimal("${response?.main?.temp ?? "0"}");
+    description = response!.weather![0].description!;
     setBusy(false);
+  }
+
+  void selectCity(String cityName) {
+    for (var city in _city) {
+      if (city.city == cityName) {
+        getWeather(lat: city.lat, lon: city.lng);
+        print(_city);
+      }
+    }
+    print(_city);
+  }
+
+void changeCity(List<String>? results) {
+  if (results != null && results.length <= 3) {
+    selectedCities = results;
+    notifyListeners();
+  }
+}
+
+
+
+
+  Future<void> getCities(context) async {
+    setBusy(true);
+    final response = await _server.getCityName(context);
+    _cityResponse = response.map((e) => e.city).toList();
+    _city = response;
+    setBusy(false);
+    notifyListeners();
   }
 }

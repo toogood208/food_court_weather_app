@@ -1,3 +1,3 @@
-const String baseUrl = 'api.openweathermap.org';
-const String apiKey = "cf608625e36fb1b5e2c0e7e0f05b4d4f";
+const String baseUrl = 'https://api.openweathermap.org';
+const String apiKey = "57890fca5990380d37c02afd38bbdf4a";
 const String currentRoute = '/data/2.5/weather';

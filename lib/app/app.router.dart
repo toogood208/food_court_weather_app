@@ -5,15 +5,14 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i5;
 import 'package:flutter/material.dart';
 import 'package:food_court_weather_app/views/current_location/current_location_view.dart'
     as _i3;
-import 'package:food_court_weather_app/views/home/home_view.dart' as _i4;
+import 'package:food_court_weather_app/views/home/home.dart' as _i4;
 import 'package:food_court_weather_app/views/splash_screen/splash_screen_view.dart'
     as _i2;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i6;
+import 'package:stacked_services/stacked_services.dart' as _i5;
 
 class Routes {
   static const splashScreenView = '/splash-screen-view';
@@ -59,10 +58,8 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i4.HomeView: (data) {
-      final args = data.getArgs<HomeViewArguments>(nullOk: false);
       return _i1.buildAdaptivePageRoute<dynamic>(
-        builder: (context) => _i4.HomeView(
-            key: args.key, latitude: args.latitude, longitude: args.longitude),
+        builder: (context) => const _i4.HomeView(),
         settings: data,
       );
     },
@@ -74,21 +71,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-class HomeViewArguments {
-  const HomeViewArguments({
-    this.key,
-    required this.latitude,
-    required this.longitude,
-  });
-
-  final _i5.Key? key;
-
-  final String latitude;
-
-  final String longitude;
-}
-
-extension NavigatorStateExtension on _i6.NavigationService {
+extension NavigatorStateExtension on _i5.NavigationService {
   Future<dynamic> navigateToSplashScreenView([
     int? routerId,
     bool preventDuplicates = true,
@@ -117,19 +100,14 @@ extension NavigatorStateExtension on _i6.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToHomeView({
-    _i5.Key? key,
-    required String latitude,
-    required String longitude,
+  Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
+  ]) async {
     return navigateTo<dynamic>(Routes.homeView,
-        arguments: HomeViewArguments(
-            key: key, latitude: latitude, longitude: longitude),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -164,19 +142,14 @@ extension NavigatorStateExtension on _i6.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithHomeView({
-    _i5.Key? key,
-    required String latitude,
-    required String longitude,
+  Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  }) async {
+  ]) async {
     return replaceWith<dynamic>(Routes.homeView,
-        arguments: HomeViewArguments(
-            key: key, latitude: latitude, longitude: longitude),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

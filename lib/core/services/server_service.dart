@@ -1,10 +1,12 @@
 
+import 'package:flutter/material.dart';
 import 'package:food_court_weather_app/core/services/network_services/api_service.dart';
 import 'package:food_court_weather_app/core/services/network_services/network_constant.dart';
 
 import '../../app/app.locator.dart';
 import '../../app/app.logger.dart';
 import '../model/weather/weather.dart';
+import '../model/city/city.dart';
 import 'network_services/network_services.dart';
 
 
@@ -24,6 +26,13 @@ class ServerService {
      _log.v(dataResponse);
      return dataResponse;
    });
+  }
+
+  Future<List<CityResponse>> getCityName(context) async {
+    var response = await DefaultAssetBundle.of(context)
+        .loadString("assets/data/cities.json");
+    _log.v(response.toString());
+    return cityResponseFromJson(response);
   }
 
 }

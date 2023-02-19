@@ -14,6 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts:
   flutter_screenutil:
+  open_weather_api_client: ^3.1.1
 
   # location
   geocoding: ^2.0.5
@@ -49,4 +50,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    - assets/data/city_data.json
+    - assets/data/cities.json

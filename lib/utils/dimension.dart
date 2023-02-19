@@ -26,3 +26,6 @@ var splashScreen2WeatherTextPositionTop = 250.h;
 var splashScreen2WeatherTestPositionLeft = 61.w;
 var homeLeadingImageWidth = 38.w;
 var homeLeadingImageHeight = 40.11.h;
+var weatherWidgetLeftPadding =  EdgeInsets.only(
+  left: 37.w,
+);

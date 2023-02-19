@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_court_weather_app/views/home/example.dart';
+import 'package:food_court_weather_app/views/home/home.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import 'app/app.locator.dart';
@@ -28,9 +30,10 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
-          initialRoute: Routes.splashScreenView,
-          onGenerateRoute: StackedRouter().onGenerateRoute,
-          navigatorKey: StackedService.navigatorKey,
+         // initialRoute: Routes.splashScreenView,
+         // onGenerateRoute: StackedRouter().onGenerateRoute,
+         // navigatorKey: StackedService.navigatorKey,
+          home: HomeView(),
         );
       },
 

@@ -27,7 +27,6 @@ class CurrentLocationViewModel extends BaseViewModel {
   }
 
   void navigateToHome({required String latitude, required String longitude}){
-    _navigation.clearStackAndShow(Routes.homeView, arguments: HomeViewArguments(latitude: latitude, longitude: longitude));
   }
 
 }
