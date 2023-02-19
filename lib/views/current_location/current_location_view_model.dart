@@ -20,8 +20,14 @@ class CurrentLocationViewModel extends BaseViewModel {
     final position = await _location.getGeoLocationPosition();
     latitude = "${position.latitude}";
     longitude = "${position.longitude}";
-    notifyListeners();
+    if(latitude != null && longitude != null){
+      navigateToHome(latitude: latitude!, longitude: longitude!);
+    }
     _logger.v("Latitude:$latitude, Longitude:$longitude");
+  }
+
+  void navigateToHome({required String latitude, required String longitude}){
+    _navigation.clearStackAndShow(Routes.homeView, arguments: HomeViewArguments(latitude: latitude, longitude: longitude));
   }
 
 }
