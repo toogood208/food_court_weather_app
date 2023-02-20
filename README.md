@@ -12,4 +12,6 @@ A new Flutter project.
  - [x] Allow users to add/remove cities in the carousel/ tab view. The city selection can refer to:[](https://simplemaps.com/data/ng-cities)
  - [x] Cities in the carousel should be persisted. Once the app is killed and opened back, the list of cities is still the same
  - [x] A feature to use “Current Location” to display the weather information. This will detect the user's current location, get the geolocation, and call the API using longitude and latitude.
+### AppDemo
+https://user-images.githubusercontent.com/82845772/220108818-fb3e9d64-1229-4a29-885f-e29622ce75d6.mp4
 
