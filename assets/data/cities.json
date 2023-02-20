@@ -164,6 +164,17 @@
     "capital": "minor", 
     "population": "736072", 
     "population_proper": "213961"
+  },
+  {
+    "city": "Asaba", 
+    "lat": "6.1833", 
+    "lng": "6.75", 
+    "country": "Nigeria", 
+    "iso2": "NG", 
+    "admin_name": "Delta", 
+    "capital": "admin", 
+    "population": "736072", 
+    "population_proper": "213961"
   }
   
 ]

@@ -19,7 +19,7 @@ class CustomTextBox extends StatelessWidget {
       CrossAxisAlignment.start,
       children: [
         Text(
-          "Tommorow's Mood ",
+          mainText,
           style: GoogleFonts.poppins(
             fontSize: 14.4.sp,
             fontWeight: FontWeight.w400,
@@ -28,7 +28,7 @@ class CustomTextBox extends StatelessWidget {
           ),
         ),
         Text(
-          "Excellent",
+          subText,
           style: GoogleFonts.poppins(
             fontSize: 12.sp,
             fontWeight: FontWeight.w500,

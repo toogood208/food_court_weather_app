@@ -1,9 +1,10 @@
 import 'package:food_court_weather_app/app/app.locator.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class LocationService {
- final _snackbar  = locator<SnackbarService>();
+  final _snackbar = locator<SnackbarService>();
   Future<Position> getGeoLocationPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -23,12 +24,20 @@ class LocationService {
     }
 
     if (permission == LocationPermission.deniedForever) {
-      _snackbar.showSnackbar(message: "Location permissions are permanently denied, we cannot request permissions.");
+      _snackbar.showSnackbar(
+          message:
+              "Location permissions are permanently denied, we cannot request permissions.");
     }
 
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
   }
 
-
+  Future<String> getCityName() async {
+    final position = await getGeoLocationPosition();
+    final placemark =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
+    final cityName = placemark.first;
+    return cityName.locality!;
+  }
 }

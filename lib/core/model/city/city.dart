@@ -2,6 +2,8 @@
 //
 //     final cityResponse = cityResponseFromJson(jsonString);
 
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 
 List<CityResponse> cityResponseFromJson(String str) => List<CityResponse>.from(json.decode(str).map((x) => CityResponse.fromJson(x)));

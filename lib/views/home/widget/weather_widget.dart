@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court_weather_app/utils/dimension.dart';
 import 'package:food_court_weather_app/utils/text_style.dart';
 import 'package:food_court_weather_app/views/home/home_view_model.dart';
+import 'package:food_court_weather_app/widgets/app_spinner.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 
@@ -21,12 +22,13 @@ class WeatherWidget extends StatelessWidget {
     BuildContext context,
   ) {
     return ViewModelBuilder.reactive(
-      onViewModelReady: (model) {
-        model.selectCity(city);
-      },
+      fireOnViewModelReadyOnce:true ,
+      onViewModelReady: (model) => model.selectCity(city, context),
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, model, child) => Scaffold(
-        body: SafeArea(
+        body:model.isBusy ? const Center(
+          child: AppSpinner(),
+        ): SafeArea(
           child: Padding(
               padding: weatherWidgetLeftPadding,
               child: Stack(

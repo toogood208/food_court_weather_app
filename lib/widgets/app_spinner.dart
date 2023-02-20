@@ -15,7 +15,7 @@ class AppSpinner extends StatelessWidget {
       width: size,
       height: size,
       child: CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation(color ?? Colors.grey),
+        valueColor: AlwaysStoppedAnimation(color ?? Colors.black),
       ),
     );
   }

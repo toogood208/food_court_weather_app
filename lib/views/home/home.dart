@@ -7,11 +7,17 @@ import 'package:food_court_weather_app/widgets/custom_multi_select.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const HomeView({super.key, required this.cities});
+  final List<String> cities;
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
+      fireOnViewModelReadyOnce: true,
+      onViewModelReady: (model) {
+        model.initiate(cities);
+        model.getCities(context);
+      },
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, model, child) => DefaultTabController(
         length: model.selectedCities.length,

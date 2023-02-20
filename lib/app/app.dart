@@ -1,3 +1,4 @@
+import 'package:food_court_weather_app/core/services/local_storage_service.dart';
 import 'package:food_court_weather_app/core/services/location_service.dart';
 import 'package:food_court_weather_app/core/services/network_services/api_service.dart';
 import 'package:food_court_weather_app/core/services/network_services/network_services.dart';
@@ -27,6 +28,13 @@ import '../views/splash_screen/splash_screen_view.dart';
 
     // location
     LazySingleton(classType: LocationService),
+
+     // local storage
+    Presolve(
+      classType: SharedPreferencesService,
+      presolveUsing: SharedPreferencesService.getInstance,
+    )
+
   ],
   logger: StackedLogger(),
 )

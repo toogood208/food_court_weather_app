@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court_weather_app/utils/text_style.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import '../core/model/city/city.dart';
 
 class MultiSelect extends StatefulWidget {
   final List<String> items;
-  const MultiSelect({Key? key, required this.items}) : super(key: key);
+  const MultiSelect({Key? key, required this.items})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MultiSelectState();
@@ -40,17 +37,18 @@ class _MultiSelectState extends State<MultiSelect> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
+    return 
+     AlertDialog(
       title: const Text('Select Topics'),
       content: SingleChildScrollView(
         child: ListBody(
           children: widget.items
               .map((item) => CheckboxListTile(
-            value: _selectedItems.contains(item),
-            title: Text(item,style:kBodyTextStyle),
-            controlAffinity: ListTileControlAffinity.leading,
-            onChanged: (isChecked) => _itemChange(item, isChecked!),
-          ))
+                    value: _selectedItems.contains(item),
+                    title: Text(item, style: kBodyTextStyle),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    onChanged: (isChecked) => _itemChange(item, isChecked!),
+                  ))
               .toList(),
         ),
       ),

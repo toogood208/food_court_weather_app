@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court_weather_app/views/current_location/current_location_view_model.dart';
+import 'package:food_court_weather_app/widgets/app_spinner.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../utils/colors.dart';
@@ -16,7 +17,7 @@ class CurrentLocationView extends StatelessWidget {
       viewModelBuilder: () => CurrentLocationViewModel(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: splashScreen2BackgroundColor,
-        body: Padding(
+        body: model.isBusy ? const Center(child: AppSpinner(),): Padding(
           padding:  EdgeInsets.all(25.0.r),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
