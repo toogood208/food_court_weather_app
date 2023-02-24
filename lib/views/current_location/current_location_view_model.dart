@@ -27,7 +27,7 @@ class CurrentLocationViewModel extends BaseViewModel {
   }
 
   void navigateToHome(List<String> c) {
-    _navigation.navigateTo(Routes.homeView,
+    _navigation.pushNamedAndRemoveUntil(Routes.homeView,
         arguments: HomeViewArguments(cities: c));
   }
 }
