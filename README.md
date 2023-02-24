@@ -2,15 +2,16 @@
 
 A new Flutter project.
 
-## Getting Started
+### Architecture
+ StackedArchitecture(MVVM)
+### Statemanagement
+  Stacked
+### AppDetails
+ - [x] Provide 15 cities [](from this list https://simplemaps.com/data/ng-cities ) for the user to choose to check the weather
+ - [x] The weather data display will change according to the selection.
+ - [x] Allow users to add/remove cities in the carousel/ tab view. The city selection can refer to:[](https://simplemaps.com/data/ng-cities)
+ - [x] Cities in the carousel should be persisted. Once the app is killed and opened back, the list of cities is still the same
+ - [x] A feature to use “Current Location” to display the weather information. This will detect the user's current location, get the geolocation, and call the API using longitude and latitude.
+### AppDemo
+https://user-images.githubusercontent.com/82845772/220108818-fb3e9d64-1229-4a29-885f-e29622ce75d6.mp4
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
